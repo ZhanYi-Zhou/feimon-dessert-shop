@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手工布朗尼 - 濃郁美味，純手工製作</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3c2218;
+            --secondary-color: #8b5e3c;
+            --accent-color: #d4a373;
+            --text-color: #2b2b2b;
+            --light-bg: #faf3e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content {
+                margin: 0 20px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">布朗尼工坊</a>
+                <ul class="nav-links">
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#products">產品系列</a></li>
+                    <li><a href="#about">關於我們</a></li>
+                    <li><a href="#store">購買方式</a></li>
+                    <li><a href="#faq">常見問題</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>純手工布朗尼</h1>
+                <p>使用比利時頂級巧克力製作，口感濕潤綿密，每一口都是濃郁的巧克力享受。堅持使用天然食材，不添加防腐劑，為您帶來最純粹的美味體驗。</p>
+                <a href="#products" class="btn">探索產品</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">為什麼選擇我們</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>頂級巧克力</h3>
+                        <p>使用比利時頂級巧克力，確保每一口都能品嚐到最純正的巧克力風味。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>純手工製作</h3>
+                        <p>每一塊布朗尼都由專業烘焙師傅親手製作，嚴格控制品質。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>新鮮出爐</h3>
+                        <p>每日新鮮製作，確保您品嚐到最佳風味。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">產品系列</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1515037893149-de7300c5b43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')" data-src="https://images.unsplash.com/photo-1515037893149-de7300c5b43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></div>
+                    <div class="product-content">
+                        <h3>經典布朗尼</h3>
+                        <p>濃郁巧克力，口感綿密</p>
+                        <span class="price">NT$ 60 / 片</span>
+                        <div class="product-quantity">
+                            <button class="quantity-btn minus" data-id="1">-</button>
+                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="1">
+                            <button class="quantity-btn plus" data-id="1">+</button>
+                        </div>
+                        <button class="btn add-to-cart" data-id="1">加入購物車</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')" data-src="https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></div>
+                    <div class="product-content">
+                        <h3>核桃布朗尼</h3>
+                        <p>添加美國核桃，香脆可口</p>
+                        <span class="price">NT$ 70 / 片</span>
+                        <div class="product-quantity">
+                            <button class="quantity-btn minus" data-id="2">-</button>
+                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="2">
+                            <button class="quantity-btn plus" data-id="2">+</button>
+                        </div>
+                        <button class="btn add-to-cart" data-id="2">加入購物車</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1589375025852-a66cdd127efb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')" data-src="https://images.unsplash.com/photo-1589375025852-a66cdd127efb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></div>
+                    <div class="product-content">
+                        <h3>覆盆子布朗尼</h3>
+                        <p>清新水果風味，酸甜可口</p>
+                        <span class="price">NT$ 75 / 片</span>
+                        <div class="product-quantity">
+                            <button class="quantity-btn minus" data-id="3">-</button>
+                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="3">
+                            <button class="quantity-btn plus" data-id="3">+</button>
+                        </div>
+                        <button class="btn add-to-cart" data-id="3">加入購物車</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')" data-src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></div>
+                    <div class="product-content">
+                        <h3>薄荷巧克力布朗尼</h3>
+                        <p>清涼薄荷香，驚喜口感</p>
+                        <span class="price">NT$ 75 / 片</span>
+                        <div class="product-quantity">
+                            <button class="quantity-btn minus" data-id="4">-</button>
+                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="4">
+                            <button class="quantity-btn plus" data-id="4">+</button>
+                        </div>
+                        <button class="btn add-to-cart" data-id="4">加入購物車</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section class="section" id="store">
+        <div class="container">
+            <h2 class="section-title">購買方式</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>線上購買</h3>
+                        <p>透過我們的網站直接下單，支援信用卡、行動支付等多種付款方式，全台灣宅配到府。</p>
+                        <a href="#products" class="btn">立即選購</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1513866942111-e6e1e355cfa3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1513866942111-e6e1e355cfa3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>實體門市</h3>
+                        <p>歡迎蒞臨我們的門市選購，直接體驗最新鮮的布朗尼。台北、台中和高雄皆有門市。</p>
+                        <button class="btn toggle-stores">門市資訊</button>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1565071559227-20451283c74c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60')" data-src="https://images.unsplash.com/photo-1565071559227-20451283c74c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"></div>
+                    <div class="feature-content">
+                        <h3>企業訂購</h3>
+                        <p>提供企業大量訂購服務，適合公司活動、節慶禮品等，可客製專屬包裝。</p>
+                        <a href="#contact" class="btn">聯絡我們</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 門市資訊彈窗 -->
+        <div class="store-modal">
+            <div class="store-modal-content">
+                <span class="store-modal-close">&times;</span>
+                <h2>門市據點</h2>
+                <div class="store-list">
+                    <div class="store-item">
+                        <h3>台北旗艦店</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 台北市信義區松高路123號</p>
+                        <p><i class="fas fa-phone"></i> 02-2345-6789</p>
+                        <p><i class="fas fa-clock"></i> 11:00-21:00 (週一至週日)</p>
+                    </div>
+                    <div class="store-item">
+                        <h3>台中美術館店</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 台中市西區五權西路一段456號</p>
+                        <p><i class="fas fa-phone"></i> 04-2345-6789</p>
+                        <p><i class="fas fa-clock"></i> 10:00-20:00 (週二至週日，週一公休)</p>
+                    </div>
+                    <div class="store-item">
+                        <h3>高雄駁二店</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 高雄市鹽埕區大勇路789號</p>
+                        <p><i class="fas fa-phone"></i> 07-2345-6789</p>
+                        <p><i class="fas fa-clock"></i> 11:00-21:00 (週一至週日)</p>
+                    </div>
+                </div>
+                <div id="store-map" style="height: 300px; margin-top: 20px; background: #f4f4f4; display: flex; justify-content: center; align-items: center; color: #888;">
+                    <p>互動式地圖載入中...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">聯絡我們</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>與我們保持聯繫</h3>
+                    <p>無論是產品詢問、合作提案，或是企業訂購需求，都歡迎與我們聯繫。</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>台北市信義區松高路123號</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p>02-2345-6789</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>info@brownie-shop.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-line"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="email" placeholder="電子郵件" required>
+                        <input type="text" placeholder="主旨">
+                        <textarea placeholder="請留下您的訊息..." required></textarea>
+                        <button type="submit" class="btn">發送訊息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>布朗尼工坊</h3>
+                    <p>堅持使用頂級食材和傳統工藝，為您帶來最純粹的布朗尼美味體驗。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速連結</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首頁</a></li>
+                        <li><a href="#products">產品系列</a></li>
+                        <li><a href="#about">關於我們</a></li>
+                        <li><a href="#store">購買方式</a></li>
+                        <li><a href="#contact">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>聯絡資訊</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">台北市信義區松高路123號</a></li>
+                        <li><a href="tel:0223456789">02-2345-6789</a></li>
+                        <li><a href="mailto:info@brownie-shop.com">info@brownie-shop.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>營業時間</h3>
+                    <ul class="footer-links">
+                        <li>週一至週五: 10:00 - 21:00</li>
+                        <li>週六至週日: 10:00 - 22:00</li>
+                        <li>國定假日: 10:00 - 22:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 布朗尼工坊 版權所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* 新增樣式 */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background-color: var(--secondary-color);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .feature-content {
+            padding: 30px;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .feature-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .products {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .product-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .product-quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .feature-card {
+                margin: 0 20px;
+            }
+        }
+
+        /* 門市彈窗樣式 */
+        .store-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .store-modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .store-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+        
+        .store-modal-close:hover {
+            color: var(--primary-color);
+        }
+        
+        .store-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .store-item {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light-bg);
+        }
+        
+        .store-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .store-item p {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .store-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        /* 聯絡區域樣式 */
+        .contact {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* 頁尾樣式 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // 產品數據
+        const products = [
+            {
+                id: 1,
+                name: '經典布朗尼',
+                description: '濃郁巧克力，口感綿密',
+                price: 60,
+                image: 'https://images.unsplash.com/photo-1515037893149-de7300c5b43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                stock: 20
+            },
+            {
+                id: 2,
+                name: '核桃布朗尼',
+                description: '添加美國核桃，香脆可口',
+                price: 70,
+                image: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                stock: 20
+            },
+            {
+                id: 3,
+                name: '覆盆子布朗尼',
+                description: '清新水果風味，酸甜可口',
+                price: 75,
+                image: 'https://images.unsplash.com/photo-1589375025852-a66cdd127efb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                stock: 20
+            },
+            {
+                id: 4,
+                name: '薄荷巧克力布朗尼',
+                description: '清涼薄荷香，驚喜口感',
+                price: 75,
+                image: 'https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                stock: 20
+            }
+        ];
+
+        // 購物車數據
+        let cart = [];
+        
+        // DOM 載入完成後初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initProductQuantityControls();
+            initAddToCart();
+            initStoreModal();
+            initContactForm();
+        });
+
+        // 初始化移動裝置選單
+        function initMobileMenu() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = 'white';
+                    navLinks.style.padding = '20px';
+                    navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                }
+            });
+        }
+
+        // 初始化產品數量控制
+        function initProductQuantityControls() {
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const input = document.querySelector(`.quantity-input[data-id="${id}"]`);
+                    const currentValue = parseInt(input.value);
+                    
+                    if (this.classList.contains('minus') && currentValue > 1) {
+                        input.value = currentValue - 1;
+                    } else if (this.classList.contains('plus') && currentValue < parseInt(input.getAttribute('max'))) {
+                        input.value = currentValue + 1;
+                    }
+                });
+            });
+        }
+
+        // 初始化加入購物車功能
+        function initAddToCart() {
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === id);
+                    const quantityInput = document.querySelector(`.quantity-input[data-id="${id}"]`);
+                    const quantity = parseInt(quantityInput.value);
+                    
+                    addToCart(product, quantity);
+                    showNotification(`已將 ${quantity} 片 ${product.name} 加入購物車！`);
+                });
+            });
+        }
+
+        // 添加到購物車
+        function addToCart(product, quantity) {
+            const existingItem = cart.find(item => item.product.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    product: product,
+                    quantity: quantity
+                });
+            }
+            
+            console.log('購物車:', cart);
+        }
+
+        // 顯示通知
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // 門市彈窗功能
+        function initStoreModal() {
+            const storeModal = document.querySelector('.store-modal');
+            const toggleBtn = document.querySelector('.toggle-stores');
+            const closeBtn = document.querySelector('.store-modal-close');
+            
+            toggleBtn.addEventListener('click', function() {
+                storeModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 防止背景滾動
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                storeModal.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === storeModal) {
+                    storeModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // 初始化表單提交
+        function initContactForm() {
+            const contactForm = document.querySelector('#contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nameInput = this.querySelector('input[type="text"]');
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const messageInput = this.querySelector('textarea');
+                    
+                    // 簡單的表單驗證
+                    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                        showNotification('請填寫所有必填欄位！');
+                        return;
+                    }
+                    
+                    // 電子郵件格式驗證
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(emailInput.value)) {
+                        showNotification('請輸入有效的電子郵件地址！');
+                        return;
+                    }
+                    
+                    // 模擬表單提交
+                    showNotification('訊息發送中...');
+                    
+                    setTimeout(() => {
+                        // 重置表單
+                        contactForm.reset();
+                        showNotification('您的訊息已成功發送！我們會盡快回覆您。');
+                    }, 1500);
+                });
+            }
+        }
+    </script>
+
+    <style>
+        /* 通知樣式 */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</body>
+</html> 
