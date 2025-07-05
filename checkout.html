@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結帳 - 馡夢小食光</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf3e0;
+            color: #2b2b2b;
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c1810;
+            margin-bottom: 30px;
+        }
+        .cart-summary {
+            margin-bottom: 40px;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .cart-table th, .cart-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        .cart-table th {
+            background: #faf3e0;
+            color: #6b4c3c;
+        }
+        .cart-total-row td {
+            font-weight: bold;
+            color: #d4a373;
+        }
+        .checkout-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .checkout-form input, .checkout-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .checkout-form .form-group {
+            margin-bottom: 18px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #d4a373;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #6b4c3c;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #6b4c3c;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>結帳</h1>
+        <div class="cart-summary">
+            <h2 style="font-size:1.3rem; color:#2c1810; margin-bottom:10px;">購物車明細</h2>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>商品名稱</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- 購物車商品將由 JS 動態插入 -->
+                </tbody>
+                <tfoot>
+                    <tr class="cart-total-row">
+                        <td colspan="3">總計</td>
+                        <td id="cart-total">NT$ 0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <form class="checkout-form" id="checkout-form">
+            <div class="form-group">
+                <label for="name">收件人姓名 *</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">聯絡電話 *</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">收件地址 *</label>
+                <input type="text" id="address" required>
+            </div>
+            <div class="form-group">
+                <label for="email">電子郵件 *</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="payment">付款方式 *</label>
+                <select id="payment" required>
+                    <option value="">請選擇</option>
+                    <option value="credit">信用卡</option>
+                    <option value="cod">貨到付款</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">送出訂單</button>
+        </form>
+        <a href="index.html" class="back-link">← 返回商店</a>
+    </div>
+    <script>
+        // 從 localStorage 取得購物車資料
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const products = [
+            {id:1, name:'原味雪Q餅', price:100},
+            {id:2, name:'抹茶雪Q餅', price:120},
+            {id:3, name:'巧克力雪Q餅', price:120},
+            {id:4, name:'綜合雪Q餅', price:120},
+            {id:5, name:'靜謐醇熟韻', price:50},
+            {id:6, name:'柔田小確幸', price:50},
+            {id:7, name:'秘醺蘭姆霧', price:50},
+            {id:8, name:'靜甜輕醺係', price:50},
+            {id:9, name:'靜謐醇熟韻 (6入盒裝)', price:280},
+            {id:10, name:'柔田小確幸 (6入盒裝)', price:280},
+            {id:11, name:'秘醺蘭姆霧 (6入盒裝)', price:280},
+            {id:12, name:'靜甜輕醺係 (6入盒裝)', price:280}
+        ];
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+            if(cart.length === 0) {
+                cartItems.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#888;">購物車是空的</td></tr>';
+            } else {
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    const subtotal = item.quantity * product.price;
+                    total += subtotal;
+                    cartItems.innerHTML += `<tr><td>${product.name}</td><td>${item.quantity}</td><td>NT$ ${product.price}</td><td>NT$ ${subtotal}</td></tr>`;
+                });
+            }
+            document.getElementById('cart-total').textContent = `NT$ ${total}`;
+        }
+        renderCart();
+        // 表單送出
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('訂單已送出！感謝您的購買。');
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html> 

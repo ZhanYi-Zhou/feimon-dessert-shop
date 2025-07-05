@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手工布朗尼 - 濃郁美味，純手工製作</title>
+    <title>手工點心 | fait à la main 馡夢小食光</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -65,6 +65,10 @@
             color: var(--primary-color);
             text-decoration: none;
             letter-spacing: 1px;
+        }
+        
+        .logo img {
+            max-height: 50px; /* 調整 Logo 高度 */
         }
         
         .nav-links {
@@ -277,6 +281,42 @@
             padding: 100px 0;
             background-color: var(--white);
         }
+
+        .product-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .product-subcategory {
+            margin-bottom: 40px;
+        }
+
+        .subcategory-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
         
         .product-grid {
             display: grid;
@@ -431,7 +471,7 @@
                 <span>總計：</span>
                 <span class="total-price">NT$ 0</span>
             </div>
-            <button class="btn checkout-btn">前往結帳</button>
+            <button class="btn checkout-btn" onclick="window.location.href='checkout.html'">前往結帳</button>
         </div>
     </div>
 
@@ -439,8 +479,9 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>純手工布朗尼</h1>
-                <p>使用純天然巧克力製作，口感濕潤綿密，每一口都是濃郁的巧克力享受。堅持使用天然食材，不添加防腐劑，為您帶來最純粹的美味體驗。</p>
+                <h1>純手工點心</h1>
+                <p>『馡夢』原意為法文手工製作，我們是一群熱愛美食的大學生，希望可以將手作溫度傳達給每位支持我們的人❣️
+                    堅持使用天然食材，不添加防腐劑，為您帶來最純粹的美味體驗。</p>
                 <a href="#products" class="btn">探索產品</a>
             </div>
         </div>
@@ -480,61 +521,197 @@
     <section class="products" id="products">
         <div class="container">
             <h2 class="section-title">產品系列</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
-                    <div class="product-content">
-                        <h3>經典布朗尼</h3>
-                        <p>濃郁巧克力，口感綿密</p>
-                        <span class="price">NT$ 60 / 片</span>
-                        <div class="product-quantity">
-                            <button class="quantity-btn minus" data-id="1">-</button>
-                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="1">
-                            <button class="quantity-btn plus" data-id="1">+</button>
+            
+            <!-- 雪Q餅系列 -->
+            <div class="product-category">
+                <h3 class="category-title">雪Q餅系列</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg')" data-src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg"></div>
+                        <div class="product-content">
+                            <h3>原味雪Q餅</h3>
+                            <p>經典原味，Q彈香甜</p>
+                            <span class="price">NT$ 100 / 包</span>
+                            <div class="product-quantity">
+                                <button class="quantity-btn minus" data-id="1">-</button>
+                                <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="1">
+                                <button class="quantity-btn plus" data-id="1">+</button>
+                            </div>
+                            <button class="btn add-to-cart" data-id="1">加入購物車</button>
                         </div>
-                        <button class="btn add-to-cart" data-id="1">加入購物車</button>
+                    </div>
+                                            <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg')" data-src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg"></div>
+                            <div class="product-content">
+                                <h3>抹茶雪Q餅</h3>
+                                <p>日式抹茶香，清新回甘</p>
+                                <span class="price">NT$ 120 / 包</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="2">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="2">
+                                    <button class="quantity-btn plus" data-id="2">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="2">加入購物車</button>
+                            </div>
+                        </div>
+                                            <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg')" data-src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg"></div>
+                            <div class="product-content">
+                                <h3>巧克力雪Q餅</h3>
+                                <p>濃郁可可，甜蜜誘人</p>
+                                <span class="price">NT$ 120 / 包</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="3">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="3">
+                                    <button class="quantity-btn plus" data-id="3">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="3">加入購物車</button>
+                            </div>
+                        </div>
+                                            <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg')" data-src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg"></div>
+                            <div class="product-content">
+                                <h3>綜合雪Q餅</h3>
+                                <p>三種口味，一次滿足</p>
+                                <span class="price">NT$ 120 / 包</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="4">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="4">
+                                    <button class="quantity-btn plus" data-id="4">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="4">加入購物車</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <!-- 布朗尼系列 -->
+            <div class="product-category">
+                <h3 class="category-title">布朗尼系列</h3>
+                
+                <!-- 單顆布朗尼 -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">單顆系列</h4>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
+                            <div class="product-content">
+                                <h3>靜謐醇熟韻</h3>
+                                <p>深焙咖啡香，成熟韻味</p>
+                                <span class="price">NT$ 50 / 顆</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="5">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="5">
+                                    <button class="quantity-btn plus" data-id="5">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="5">加入購物車</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg')" data-src="https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg"></div>
+                            <div class="product-content">
+                                <h3>柔田小確幸</h3>
+                                <p>柔軟綿密，幸福滋味</p>
+                                <span class="price">NT$ 50 / 顆</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="6">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="6">
+                                    <button class="quantity-btn plus" data-id="6">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="6">加入購物車</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg')" data-src="https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg"></div>
+                            <div class="product-content">
+                                <h3>秘醺蘭姆霧</h3>
+                                <p>蘭姆酒香，微醺風味</p>
+                                <span class="price">NT$ 50 / 顆</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="7">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="7">
+                                    <button class="quantity-btn plus" data-id="7">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="7">加入購物車</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
+                            <div class="product-content">
+                                <h3>靜甜輕醺係</h3>
+                                <p>輕甜不膩，優雅風味</p>
+                                <span class="price">NT$ 50 / 顆</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="8">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="8">
+                                    <button class="quantity-btn plus" data-id="8">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="8">加入購物車</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg')" data-src="https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg"></div>
-                    <div class="product-content">
-                        <h3>核桃布朗尼</h3>
-                        <p>添加美國核桃，香脆可口</p>
-                        <span class="price">NT$ 70 / 片</span>
-                        <div class="product-quantity">
-                            <button class="quantity-btn minus" data-id="2">-</button>
-                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="2">
-                            <button class="quantity-btn plus" data-id="2">+</button>
+
+                <!-- 盒裝布朗尼 -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">6入盒裝系列</h4>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
+                            <div class="product-content">
+                                <h3>靜謐醇熟韻 (6入盒裝)</h3>
+                                <p>深焙咖啡香，成熟韻味</p>
+                                <span class="price">NT$ 280 / 盒</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="9">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="9">
+                                    <button class="quantity-btn plus" data-id="9">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="9">加入購物車</button>
+                            </div>
                         </div>
-                        <button class="btn add-to-cart" data-id="2">加入購物車</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg')" data-src="https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg"></div>
-                    <div class="product-content">
-                        <h3>覆盆子布朗尼</h3>
-                        <p>清新水果風味，酸甜可口</p>
-                        <span class="price">NT$ 75 / 片</span>
-                        <div class="product-quantity">
-                            <button class="quantity-btn minus" data-id="3">-</button>
-                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="3">
-                            <button class="quantity-btn plus" data-id="3">+</button>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg')" data-src="https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg"></div>
+                            <div class="product-content">
+                                <h3>柔田小確幸 (6入盒裝)</h3>
+                                <p>柔軟綿密，幸福滋味</p>
+                                <span class="price">NT$ 280 / 盒</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="10">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="10">
+                                    <button class="quantity-btn plus" data-id="10">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="10">加入購物車</button>
+                            </div>
                         </div>
-                        <button class="btn add-to-cart" data-id="3">加入購物車</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
-                    <div class="product-content">
-                        <h3>薄荷巧克力布朗尼</h3>
-                        <p>清涼薄荷香，驚喜口感</p>
-                        <span class="price">NT$ 75 / 片</span>
-                        <div class="product-quantity">
-                            <button class="quantity-btn minus" data-id="4">-</button>
-                            <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="4">
-                            <button class="quantity-btn plus" data-id="4">+</button>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg')" data-src="https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg"></div>
+                            <div class="product-content">
+                                <h3>秘醺蘭姆霧 (6入盒裝)</h3>
+                                <p>蘭姆酒香，微醺風味</p>
+                                <span class="price">NT$ 280 / 盒</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="11">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="11">
+                                    <button class="quantity-btn plus" data-id="11">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="11">加入購物車</button>
+                            </div>
                         </div>
-                        <button class="btn add-to-cart" data-id="4">加入購物車</button>
+                        <div class="product-card">
+                            <div class="product-img" style="background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg')" data-src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg"></div>
+                            <div class="product-content">
+                                <h3>靜甜輕醺係 (6入盒裝)</h3>
+                                <p>輕甜不膩，優雅風味</p>
+                                <span class="price">NT$ 280 / 盒</span>
+                                <div class="product-quantity">
+                                    <button class="quantity-btn minus" data-id="12">-</button>
+                                    <input type="number" min="1" max="20" value="1" class="quantity-input" data-id="12">
+                                    <button class="quantity-btn plus" data-id="12">+</button>
+                                </div>
+                                <button class="btn add-to-cart" data-id="12">加入購物車</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -638,7 +815,7 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/14qnB7F7bi/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/feimon0305?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://lin.ee/fsJeNkD"><i class="fab fa-line"></i></a>
+                        <a href="https://page.line.me/667pqhwg"><i class="fab fa-line"></i></a>
                     </div>
                 </div>
                 
@@ -1219,42 +1396,133 @@
     <script>
         // 產品數據
         const products = [
+            // 雪Q餅系列
             {
                 id: 1,
-                name: '經典布朗尼',
-                description: '濃郁巧克力，口感綿密',
-                price: 60,
-                image: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg',
-                stock: 20
+                name: '原味雪Q餅',
+                description: '經典原味，Q彈香甜',
+                price: 100,
+                unit: '包',
+                image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg',
+                stock: 20,
+                category: 'snowq'
             },
             {
                 id: 2,
-                name: '核桃布朗尼',
-                description: '添加美國核桃，香脆可口',
-                price: 70,
-                image: 'https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg',
-                stock: 20
+                name: '抹茶雪Q餅',
+                description: '日式抹茶香，清新回甘',
+                price: 120,
+                unit: '包',
+                image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg',
+                stock: 20,
+                category: 'snowq'
             },
             {
                 id: 3,
-                name: '覆盆子布朗尼',
-                description: '清新水果風味，酸甜可口',
-                price: 75,
-                image: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg',
-                stock: 20
+                name: '巧克力雪Q餅',
+                description: '濃郁可可，甜蜜誘人',
+                price: 120,
+                unit: '包',
+                image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg',
+                stock: 20,
+                category: 'snowq'
             },
             {
                 id: 4,
-                name: '薄荷巧克力布朗尼',
-                description: '清涼薄荷香，驚喜口感',
-                price: 75,
+                name: '綜合雪Q餅',
+                description: '三種口味，一次滿足',
+                price: 120,
+                unit: '包',
+                image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg',
+                stock: 20,
+                category: 'snowq'
+            },
+            // 布朗尼系列 - 單顆
+            {
+                id: 5,
+                name: '靜謐醇熟韻',
+                description: '深焙咖啡香，成熟韻味',
+                price: 50,
+                unit: '顆',
                 image: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg',
-                stock: 20
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 6,
+                name: '柔田小確幸',
+                description: '柔軟綿密，幸福滋味',
+                price: 50,
+                unit: '顆',
+                image: 'https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 7,
+                name: '秘醺蘭姆霧',
+                description: '蘭姆酒香，微醺風味',
+                price: 50,
+                unit: '顆',
+                image: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 8,
+                name: '靜甜輕醺係',
+                description: '輕甜不膩，優雅風味',
+                price: 50,
+                unit: '顆',
+                image: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            // 布朗尼系列 - 盒裝
+            {
+                id: 9,
+                name: '靜謐醇熟韻 (6入盒裝)',
+                description: '深焙咖啡香，成熟韻味',
+                price: 280,
+                unit: '盒',
+                image: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 10,
+                name: '柔田小確幸 (6入盒裝)',
+                description: '柔軟綿密，幸福滋味',
+                price: 280,
+                unit: '盒',
+                image: 'https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 11,
+                name: '秘醺蘭姆霧 (6入盒裝)',
+                description: '蘭姆酒香，微醺風味',
+                price: 280,
+                unit: '盒',
+                image: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg',
+                stock: 20,
+                category: 'brownie'
+            },
+            {
+                id: 12,
+                name: '靜甜輕醺係 (6入盒裝)',
+                description: '輕甜不膩，優雅風味',
+                price: 280,
+                unit: '盒',
+                image: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg',
+                stock: 20,
+                category: 'brownie'
             }
         ];
 
         // 購物車數據
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         
         // DOM 載入完成後初始化
         document.addEventListener('DOMContentLoaded', function() {
@@ -1263,6 +1531,7 @@
             initAddToCart();
             initStoreModal();
             initContactForm();
+            updateCartItems();
         });
 
         // 初始化移動裝置選單
@@ -1369,6 +1638,8 @@
             
             updateCartCount();
             updateCartTotal();
+            // 同步到 localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
         }
 
         // 更新購物車總金額
