@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理後台 - 馡夢小食光</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf3e0;
+            color: #2b2b2b;
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c1810;
+            margin-bottom: 30px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #faf3e0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4a373;
+        }
+        .stat-label {
+            color: #6b4c3c;
+            margin-top: 5px;
+        }
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .orders-table th, .orders-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        .orders-table th {
+            background: #faf3e0;
+            color: #6b4c3c;
+            font-weight: 600;
+        }
+        .order-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status-processing {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        .status-shipped {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-delivered {
+            background: #c3e6cb;
+            color: #155724;
+        }
+        .btn {
+            background-color: #d4a373;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #6b4c3c;
+        }
+        .btn-small {
+            padding: 4px 8px;
+            font-size: 0.8rem;
+        }
+        .order-details {
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .orders-table {
+                font-size: 0.9rem;
+            }
+            .orders-table th, .orders-table td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>馡夢小食光 - 管理後台</h1>
+        
+        <div id="stats" class="stats">
+            <!-- 統計資料將在這裡動態載入 -->
+        </div>
+        
+        <div id="message"></div>
+        
+        <div id="orders-container">
+            <div class="loading">載入訂單中...</div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // 載入訂單資料
+        async function loadOrders() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/orders`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    displayOrders(data.orders);
+                    displayStats(data.orders);
+                } else {
+                    showError(`載入訂單失敗：${data.error}`);
+                }
+            } catch (error) {
+                console.error('載入訂單錯誤:', error);
+                showError('載入訂單失敗，請檢查網路連接或後端服務是否運行。');
+            }
+        }
+        
+        // 顯示統計資料
+        function displayStats(orders) {
+            const statsContainer = document.getElementById('stats');
+            
+            const totalOrders = orders.length;
+            const pendingOrders = orders.filter(order => order.order_status === 'pending').length;
+            const totalRevenue = orders.reduce((sum, order) => sum + parseFloat(order.total_amount), 0);
+            
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalOrders}</div>
+                    <div class="stat-label">總訂單數</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${pendingOrders}</div>
+                    <div class="stat-label">待處理訂單</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">NT$ ${totalRevenue.toLocaleString()}</div>
+                    <div class="stat-label">總營收</div>
+                </div>
+            `;
+        }
+        
+        // 顯示訂單列表
+        function displayOrders(orders) {
+            const container = document.getElementById('orders-container');
+            
+            if (orders.length === 0) {
+                container.innerHTML = '<div class="loading">目前沒有訂單</div>';
+                return;
+            }
+            
+            const tableHTML = `
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>訂單編號</th>
+                            <th>客戶姓名</th>
+                            <th>聯絡電話</th>
+                            <th>總金額</th>
+                            <th>付款方式</th>
+                            <th>訂單狀態</th>
+                            <th>建立時間</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${orders.map(order => `
+                            <tr>
+                                <td>#${order.id}</td>
+                                <td>${order.customer_name}</td>
+                                <td>${order.customer_phone}</td>
+                                <td>NT$ ${parseFloat(order.total_amount).toLocaleString()}</td>
+                                <td>${getPaymentMethodText(order.payment_method)}</td>
+                                <td>
+                                    <span class="order-status status-${order.order_status}">
+                                        ${getStatusText(order.order_status)}
+                                    </span>
+                                </td>
+                                <td>${formatDate(order.created_at)}</td>
+                                <td>
+                                    <button class="btn btn-small" onclick="viewOrderDetails(${order.id})">
+                                        查看詳情
+                                    </button>
+                                    <button class="btn btn-small" onclick="updateOrderStatus(${order.id})">
+                                        更新狀態
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = tableHTML;
+        }
+        
+        // 查看訂單詳情
+        function viewOrderDetails(orderId) {
+            // 這裡可以實作彈窗顯示訂單詳情
+            alert(`查看訂單 #${orderId} 的詳情功能`);
+        }
+        
+        // 更新訂單狀態
+        async function updateOrderStatus(orderId) {
+            const newStatus = prompt('請選擇新的訂單狀態：\n1. pending (待處理)\n2. processing (處理中)\n3. shipped (已出貨)\n4. delivered (已送達)');
+            
+            if (!newStatus) return;
+            
+            const statusMap = {
+                '1': 'pending',
+                '2': 'processing', 
+                '3': 'shipped',
+                '4': 'delivered'
+            };
+            
+            const status = statusMap[newStatus];
+            if (!status) {
+                alert('無效的狀態選擇');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/orders/${orderId}/status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ status })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showSuccess('訂單狀態更新成功！');
+                    loadOrders(); // 重新載入訂單
+                } else {
+                    showError(`更新失敗：${result.error}`);
+                }
+            } catch (error) {
+                console.error('更新訂單狀態錯誤:', error);
+                showError('更新失敗，請稍後再試。');
+            }
+        }
+        
+        // 輔助函數
+        function getPaymentMethodText(method) {
+            const methods = {
+                'credit': '信用卡',
+                'cod': '貨到付款'
+            };
+            return methods[method] || method;
+        }
+        
+        function getStatusText(status) {
+            const statuses = {
+                'pending': '待處理',
+                'processing': '處理中',
+                'shipped': '已出貨',
+                'delivered': '已送達'
+            };
+            return statuses[status] || status;
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('zh-TW');
+        }
+        
+        function showError(message) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="error">${message}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+        
+        function showSuccess(message) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="success">${message}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 3000);
+        }
+        
+        // 頁面載入時執行
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrders();
+        });
+    </script>
+</body>
+</html> 
